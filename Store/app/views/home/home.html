@@ -1,0 +1,44 @@
+﻿<div class="products-filter">
+	<input class="input-search" ng-model="searchString" type="text">
+	<div class="price-asc-desc-filter">
+		<button ng-click="setOrdering('asc')" ng-class="{active: ascDescFilter == 'asc'}" class="asc"></button>
+		<button ng-click="setOrdering('desc')" ng-class="{active: ascDescFilter == 'desc'}" class="desc"></button>
+	</div>
+	<div class="price-min-max-filter">
+		<input type="number" ng-model="minPrice" class="min-price" placeholder="min $">
+		<input type="number" ng-model="maxPrice" class="max-price" placeholder="max $">
+	</div>
+</div>
+
+<div class="products-tags">
+	<div ng-repeat="filterTag in filterTags" class="tag">
+		<span>{{filterTag.name}}</span>
+		<button ng-click="removeFilterTag(filterTag)"></button>
+	</div>
+	<div class="add-tag">
+		<select ng-model="tagIdToAdd">
+			<option ng-repeat="tag in awailableTags" value="{{tag.id}}">
+				{{tag.name}}
+			</option>
+		</select>
+		<button ng-click="addFilterTag(tagIdToAdd)"></button>
+	</div>
+</div>
+
+<main>
+	<div class="products-container">
+		<div ng-repeat="product in pages()[info.currentPage].contents" class="products-item">
+			<div class="products-item-menu">
+				<span>{{product.price}} $</span>
+				<button ng-click="cart.changeProductCount(product)" class="add-to-cart"></button>
+				<button ng-click="cart.changeProductCount(product,-1)" class="remove-from-cart"></button>
+			</div>
+			<img src="images/products/{{product.images[0]}}">
+			<a ui-sref="product({name : product.urlName})">
+				{{product.name}}
+			</a>
+		</div>
+	</div>
+	<paging-bar></paging-bar>
+</main>
+

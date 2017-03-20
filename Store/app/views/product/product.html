@@ -1,0 +1,24 @@
+﻿<main>
+	<h2 class="product-header">
+		{{product.name}}
+		<a href="" ng-click="addToCart()">Add to cart</a>
+	</h2>
+	<div class="product-gallery">
+		<div class="gallery-thumbs" ng-hide="product.images.length == 1">
+			<a ng-repeat="image in product.images" ng-click="gallery.setActiveIndex($index)"
+			   ng-class="{active: $index == gallery.activeImageIndex}">
+				<img src="images/products/{{image}}">
+			</a>
+		</div>
+		<div class="gallery-main" ng-class="{'gallery-max-width' : (product.images.length == 1)}">
+			<img src="images/products/{{product.images[gallery.activeImageIndex]}}">
+		</div>
+	</div>
+</main>
+
+<div class="product-description">
+	<h3>Description :</h3>
+	<p>
+		{{product.description}}
+	</p>
+</div>

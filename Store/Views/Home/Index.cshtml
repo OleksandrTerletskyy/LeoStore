@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Store</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="icon" type="image/png" href="/images/icons/lion-title.png"/>
+
+	@*libs-start*@
+	<link href="~/app/css/style.css" rel="stylesheet" />
+	<script src="~/libs/js/angular/angular.min.js"></script>
+	<script src="~/libs/js/ui-router/angular-ui-router.js"></script>
+	<script src="~/libs/js/angular/modules/angular-resource.js"></script>
+	@*libs-end*@
+
+	@*components-start*@
+	<script src="~/app/components/cartCmp.js"></script>
+	<script src="~/app/components/pagingCmp.js"></script>
+	@*components-end*@
+
+	@*app-start*@
+	<script src="~/app/app.js"></script>
+	@*app-end*@
+
+	@*services-start*@
+	<script src="~/app/services/http/httpService.js"></script>
+	@*services-end*@
+
+	@*configs-start*@
+	<script src="~/app/config/config.routes.js"></script>
+	<script src="~/app/config/config.cartCmp.js"></script>
+	<script src="~/app/config/config.pagingCmp.js"></script>
+	@*configs-end*@
+
+	@*controllers-start*@
+	<script src="~/app/controllers/homeCtrl.js"></script>
+	<script src="~/app/controllers/productCtrl.js"></script>
+	@*controllers-end*@
+
+</head>
+<body ng-cloak ng-app="app">
+	<div class="container">
+		<header>
+
+			<div class="logo">
+				<img src="images/icons/lion-white.png" />
+				<h1>Leostore</h1>
+			</div>
+
+			<nav class="header-nav">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+			<div class="header-right-bar">
+				<button ng-class="{'focus' : isSmallCartOpened}" ng-click="isSmallCartOpened = !isSmallCartOpened" class="button-cart-menu"></button>
+				<div ng-style="{'display': isSmallCartOpened ? 'block': 'none'}" class="header-quick-bar cart-small" small-cart>
+
+				</div>
+
+				<button class="button-settings"></button>
+				<div class="header-quick-bar settings">
+					
+				</div>
+			</div>
+		</header>
+		<ui-view></ui-view>
+		<footer>
+			<div class="social-icons">
+				<a target="blank" class="linkedin" href="https://www.linkedin.com/in/oleksandr-terletskyy-a9a474130/"></a>
+				<a target="blank" class="vk" href="https://vk.com/id44299634"></a>
+				<a target="blank" class="github" href="https://github.com/OleksandrTerletskyy"></a>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>

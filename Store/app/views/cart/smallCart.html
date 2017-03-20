@@ -1,0 +1,57 @@
+﻿<table>
+	<tr>
+		<th>#</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Count</th>
+		<th>Total</th>
+	</tr>
+
+	<tr ng-repeat="cartItem in cartItems">
+		<td>{{$index + 1}}</td>
+		<td>{{cartItem.product.name}}</td>
+		<td>{{cartItem.product.price}}$</td>
+		<td>
+			<input class="productCount" min="1" ng-model="cartItem.count"
+			            type="number"/>
+		</td>
+		<td>{{cartItem.count*cartItem.product.price}}$</td>
+	</tr>
+
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>{{cartItems.length}}</td>
+		<td>{{total}}$</td>
+	</tr>
+</table>
+
+
+
+
+<!--<h4>Cart :</h4>
+<ul class="list-group">
+
+	<li class="list-group-item smallBasketItem">
+		<ul ng-repeat="cartItem in cartItems" class="list-inline center-block text-center">
+			<li>{{cartItem.product.name}}</li>
+			<li>
+				<input class="productCount" min="1" ng-model="cartItem.count"
+						type="number"/>
+			</li>
+			<li>{{cartItem.count*cartItem.product.price}}</li>
+			<li><i class="fa fa-times removeFromBasket" aria-hidden="true"></i></li>
+		</ul>
+	</li>
+
+</ul>
+<div class="smallBasketTotal alert alert-info">
+	Total : {{total}}UAH
+</div>
+<div>
+	<ul class="list-inline smallBasketControls">
+		<li class="list-inline-item"><a href="#">View all items</a></li>
+		<li class="list-inline-item"><a href="#">Commit</a></li>
+	</ul>
+</div>-->

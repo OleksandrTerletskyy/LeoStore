@@ -1,0 +1,11 @@
+﻿<div class="pagination">
+	<a href="" ng-click="goToPage(1)">&laquo;</a>
+
+	<a href="#" ng-repeat="p in Array(info.totalPages > 0 ? info.totalPages : 0) track by $index"
+	   ng-class="{active: $index+1 === info.currentPage}"
+	   ng-click="goToPage($index+1)">
+		{{$index+1}}
+	</a>
+
+	<a href="" ng-click="goToPage(info.totalPages)">&raquo;</a>
+</div>
