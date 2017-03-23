@@ -52,41 +52,40 @@ namespace Store.Controllers
 				minPrice = 0;
 			}
 
-			// filter products by search string & price
-			var products = _productsRepository.All.ToList().Where(p => p.Name.IndexOf(searchString, StringComparison.OrdinalIgnoreCase) >= 0 ).ToList();
+			var resultProducts = new List<Product>();
 
-			//filter by price
-			if (maxPrice != null)
+			foreach (var product in _productsRepository.All)
 			{
-				products = products.Where(p => p.Price <= maxPrice).ToList();
-			}
-			products = products.Where(p => p.Price >= minPrice).ToList();
-
-
-			// filter products by tags
-			if (!string.IsNullOrEmpty(filterTagNames))
-			{
-				string[] tagNamesArray = filterTagNames.Split('|');
-				products = products.Where(p =>
+				if ((maxPrice != null && product.Price > maxPrice) ||
+					product.Price < minPrice ||
+					!product.Name.Contains(searchString))
 				{
-					return tagNamesArray.All(tag => p.Tags.Any(t => t.Name == tag));
-				}).ToList();
+					continue;
+				}
+
+				if (!string.IsNullOrEmpty(filterTagNames))
+				{
+					var tagNamesArray = filterTagNames.Split('|');
+					if (!tagNamesArray.All( tag => product.Tags.Any(t => t.Name == tag)))
+					{
+						continue;
+					}
+				}
+				resultProducts.Add(product);
 			}
-		
-			var totalCount = products.Count();
-			var totalPages = Math.Ceiling((double)totalCount / pageSize);
 
 			if (orderBy == "asc")
 			{
-				products = products.OrderBy(p => p.Price).ToList();
+				resultProducts = resultProducts.OrderBy(p => p.Price).ToList();
 			}
 			if (orderBy == "desc")
 			{
-				products = products.OrderByDescending(p => p.Price).ToList();
+				resultProducts = resultProducts.OrderByDescending(p => p.Price).ToList();
 			}
 
-
-			var pageProducts = products.Skip((pageNumber - 1) * pageSize)
+			var totalCount = resultProducts.Count();
+			var totalPages = Math.Ceiling((double)totalCount / pageSize);
+			var pageProducts = resultProducts.Skip((pageNumber - 1) * pageSize)
 									.Take(pageSize).ToList();
 
 			var result = new

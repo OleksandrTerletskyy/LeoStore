@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Store.Data.Infrastructure
+namespace Store.Data.Infrastructure.Concrete
 {
 	public abstract class Disposable : IDisposable
 	{

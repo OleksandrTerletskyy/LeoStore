@@ -1,7 +1,8 @@
 ﻿using System.Data.Entity;
 using Store.Data.DatabaseContext;
+using Store.Data.Infrastructure.Abstract;
 
-namespace Store.Data.Infrastructure
+namespace Store.Data.Infrastructure.Concrete
 {
 	public class StoreContextFactory : Disposable, IDbContextFactory
 	{

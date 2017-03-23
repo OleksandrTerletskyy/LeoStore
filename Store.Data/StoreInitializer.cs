@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Diagnostics;
 using Store.Data.DatabaseContext;
 using Store.Entities.Concrete;
@@ -181,6 +182,42 @@ namespace Store.Data
 					Currency = Currency.USD,
 				}
 			};
+
+			Orders = new List<Order>()
+			{
+				new Order()
+				{
+					CustomerDetails = "CustomerDetails1",
+					CustomerPhone = "123456789",
+					CustomerName = "CustomerName1",
+					OrderDate = DateTime.Now,
+					Products = {Products[0], Products[1]}
+				},
+				new Order()
+				{
+					CustomerDetails = "CustomerDetails2",
+					CustomerPhone = "123456789",
+					CustomerName = "CustomerName2",
+					OrderDate = DateTime.Now,
+					Products = {Products[2], Products[3]}
+				},
+				new Order()
+				{
+					CustomerDetails = "CustomerDetails3",
+					CustomerPhone = "123456789",
+					CustomerName = "CustomerName3",
+					OrderDate = DateTime.Now,
+					Products = {Products[1], Products[3]}
+				},
+				new Order()
+				{
+					CustomerDetails = "CustomerDetails4",
+					CustomerPhone = "123456789",
+					CustomerName = "CustomerName4",
+					OrderDate = DateTime.Now,
+					Products = {Products[0], Products[1], Products[2], Products[3] , Products[4], Products[5]}
+				}
+			};
 		}
 		protected override void Seed(StoreContext context)
 		{
@@ -188,6 +225,7 @@ namespace Store.Data
 			{
 				Tags.ForEach(t => context.Tags.Add(t));
 				Products.ForEach(p => context.Products.Add(p));
+				Orders.ForEach(o => context.Orders.Add(o));
 			}
 			catch (Exception ex)
 			{
@@ -198,5 +236,7 @@ namespace Store.Data
 		private static List<Tag> Tags { get; set; }
 
 		private static List<Product> Products { get; set; }
+
+		private static List<Order> Orders { get; set; }
 	}
 }

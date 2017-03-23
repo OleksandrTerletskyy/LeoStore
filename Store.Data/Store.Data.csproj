@@ -54,9 +54,9 @@
     <Compile Include="Configurations\ProductConfiguration.cs" />
     <Compile Include="Configurations\TagConfiguration.cs" />
     <Compile Include="DatabaseContext\StoreContext.cs" />
-    <Compile Include="Infrastructure\StoreContextFactory.cs" />
-    <Compile Include="Infrastructure\Disposable.cs" />
-    <Compile Include="Infrastructure\IDbContextFactory.cs" />
+    <Compile Include="Infrastructure\Concrete\StoreContextFactory.cs" />
+    <Compile Include="Infrastructure\Concrete\Disposable.cs" />
+    <Compile Include="Infrastructure\Abstract\IDbContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Abstract\IEntityBaseRepository.cs" />
     <Compile Include="Repositories\Concrete\EntityBaseRepository.cs" />

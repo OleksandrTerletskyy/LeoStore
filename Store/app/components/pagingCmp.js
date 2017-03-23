@@ -95,46 +95,11 @@ var pagingServiceFunc = function ($q, $rootScope) {
 
 	function init() {
 		$rootScope.$watch(function() {
-			return service.search.searchString;
+			return [service.search.searchString, service.search.filterTags.length, service.search.ascDescFilter, service.search.minPrice, service.search.maxPrice];
 		}, function () {
 			resetPaging();
 			goToPage(1);
-		});
-
-		$rootScope.$watch(function() {
-			return service.search.filterTags.length;
-		}, function() {
-			resetPaging();
-			goToPage(1);
-		});
-
-		$rootScope.$watch(function () {
-			return service.search.searchString;
-		}, function () {
-			resetPaging();
-			goToPage(1);
-		});
-
-		$rootScope.$watch(function () {
-			return service.search.ascDescFilter;
-		}, function () {
-			resetPaging();
-			goToPage(1);
-		});
-
-		$rootScope.$watch(function () {
-			return service.search.minPrice;
-		}, function () {
-			resetPaging();
-			goToPage(1);
-		});
-
-		$rootScope.$watch(function () {
-			return service.search.maxPrice;
-		}, function () {
-			resetPaging();
-			goToPage(1);
-		});
+		}, true);
 	}
 
 	init();

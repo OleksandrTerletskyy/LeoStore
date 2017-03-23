@@ -27,7 +27,6 @@
 
 		$scope.addToCart = function() {
 			cartService.changeProductCount($scope.product);
-			$rootScope.isSmallCartOpened = true;
 		}
 
 		function init() {

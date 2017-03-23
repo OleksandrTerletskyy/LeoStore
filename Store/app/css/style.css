@@ -97,7 +97,7 @@ header .header-right-bar .header-quick-bar {
   z-index: 1;
   display: none;
   position: absolute;
-  width: 300px;
+  width: 330px;
   min-height: 100px;
   background-color: #ffffff;
   box-shadow: 1px 1px 4px 0px gray;
@@ -119,13 +119,13 @@ header .header-right-bar .header-quick-bar.cart-small {
   top: 10px;
 }
 header .header-right-bar .header-quick-bar.cart-small table {
-  width: 300px;
+  width: 330px;
   border-collapse: collapse;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 header .header-right-bar .header-quick-bar.cart-small table input {
   width: 100%;
-  max-width: 50px;
+  max-width: 70px;
 }
 header .header-right-bar .header-quick-bar.cart-small table tr {
   border-bottom: 1px dashed #bababa;

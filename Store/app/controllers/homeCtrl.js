@@ -1,11 +1,10 @@
 ﻿angular.module("app")
 	.constant("productsUrl","/api/products")
-	.controller("homeCtrl", function($rootScope, $scope, httpService,cartService, pagingService) {
+	.controller("homeCtrl", function($scope, httpService,cartService, pagingService) {
 		$scope.errors = [];
 
 		// cart-start
 		$scope.cart = cartService;
-		$rootScope.isSmallCartOpened = false;
 		// cart-end
 
 		// tags-start
@@ -30,7 +29,7 @@
 		// navigation-start
 		$scope.pages = function () { return pagingService.pages;}
 		$scope.info = pagingService.info;
-		$scope.goToPage = pagingService.goToPage; 
+		$scope.goToPage = pagingService.goToPage;
 		// navigation-end
 
 		// searching-start
@@ -43,7 +42,6 @@
 
 		// initialization
 		function init() {
-
 			// paging-init-start
 			$scope.$watch("searchString", function (newSearchString) {
 				pagingService.search.searchString = newSearchString;
@@ -76,15 +74,6 @@
 				pagingService.goToPage(1);
 			});
 			// tags-init-end
-
-			//cart-init-start
-			$scope.$watch("cart.cartData", function (cart) {
-				if (cart.length === 0) {
-					return;
-				}
-				$rootScope.isSmallCartOpened = true;
-			},true);
-			//cart-init-end
 		}
 		init();
 	});

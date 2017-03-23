@@ -37,6 +37,7 @@
 	<script src="~/app/controllers/productCtrl.js"></script>
 	@*controllers-end*@
 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body ng-cloak ng-app="app">
 	<div class="container">
@@ -55,9 +56,8 @@
 				</ul>
 			</nav>
 			<div class="header-right-bar">
-				<button ng-class="{'focus' : isSmallCartOpened}" ng-click="isSmallCartOpened = !isSmallCartOpened" class="button-cart-menu"></button>
-				<div ng-style="{'display': isSmallCartOpened ? 'block': 'none'}" class="header-quick-bar cart-small" small-cart>
-
+				<button ng-class="{'focus' : cartOpened}" ng-click="cartOpened = !cartOpened" class="button-cart-menu"></button>
+				<div ng-style="{'display': cartOpened ? 'block': 'none'}" class="header-quick-bar cart-small" small-cart>
 				</div>
 
 				<button class="button-settings"></button>
@@ -69,9 +69,9 @@
 		<ui-view></ui-view>
 		<footer>
 			<div class="social-icons">
-				<a target="blank" class="linkedin" href="https://www.linkedin.com/in/oleksandr-terletskyy-a9a474130/"></a>
-				<a target="blank" class="vk" href="https://vk.com/id44299634"></a>
-				<a target="blank" class="github" href="https://github.com/OleksandrTerletskyy"></a>
+				<a target="blank" class="linkedin" href="#"></a>
+				<a target="blank" class="vk" href="#"></a>
+				<a target="blank" class="github" href="#"></a>
 			</div>
 		</footer>
 	</div>

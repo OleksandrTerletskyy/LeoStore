@@ -24,7 +24,7 @@ cart.provider("cartService", function () {
 				}
 			}
 			return {
-				changeProductCount: function (product, quantityDifference) {
+				changeProductCount: function(product, quantityDifference) {
 					if (quantityDifference === 0) {
 						return;
 					}
@@ -33,7 +33,7 @@ cart.provider("cartService", function () {
 							if (!quantityDifference) {
 								cartData[i].count++;
 								return;
-							} 
+							}
 							if (quantityDifference > 0) {
 								cartData[i].count += quantityDifference;
 								return;
@@ -57,11 +57,8 @@ cart.provider("cartService", function () {
 						product: product
 					});
 				},
-
 				removeProduct: removeProduct,
-
 				cartData: cartData,
-
 				cartTemplateUrl: cartTemplateUrl
 			}
 		}
@@ -76,7 +73,7 @@ cart.directive("smallCart", function (cartService) {
 			$scope.cartItems = [];
 			$scope.total = 0;
 
-			$scope.recalc = function () {
+			var recalc = function () {
 				$scope.total = 0;
 				for (var i = 0; i < $scope.cartItems.length; i++) {
 					$scope.total += ($scope.cartItems[i].product.price * $scope.cartItems[i].count);
@@ -85,7 +82,7 @@ cart.directive("smallCart", function (cartService) {
 
 			function init() {
 				$scope.cartItems = cartService.cartData;
-				$scope.$watch("cartItems", $scope.recalc, true);
+				$scope.$watch("cartItems", recalc, true);
 			}
 
 			init();

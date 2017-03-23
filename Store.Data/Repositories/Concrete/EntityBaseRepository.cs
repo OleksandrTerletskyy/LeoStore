@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using Store.Data.Repositories.Abstract;
 using Store.Entities.Abstract;
 using Store.Data.Infrastructure;
+using Store.Data.Infrastructure.Abstract;
 
 namespace Store.Data.Repositories.Concrete
 {
